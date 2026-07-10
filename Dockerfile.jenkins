@@ -1,0 +1,14 @@
+FROM jenkins/jenkins:lts
+
+USER root
+
+ARG DOCKER_GID=1001
+
+RUN apt-get update && \
+    apt-get install -y docker.io && \
+    apt-get clean
+
+RUN groupadd -g ${DOCKER_GID} docker-host || true
+RUN usermod -aG docker-host jenkins
+
+USER jenkins

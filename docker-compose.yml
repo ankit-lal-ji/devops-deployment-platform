@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  devops-platform:
+    image: devops-deployment-platform:v1
+    container_name: devops-platform-container
+
+    ports:
+      - "3001:3000"
+
+    restart: unless-stopped
